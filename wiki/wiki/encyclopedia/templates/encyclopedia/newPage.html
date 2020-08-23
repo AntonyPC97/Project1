@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html" %}
+{%block title%}
+    Create a new Page
+{%endblock%}
+
+{% block body %}
+    
+    <h1>Create your Own Wiki Page</h1>
+    <form  method="POST">
+        {% csrf_token %}
+        {%if not valid%}
+        *This title already exists. Please try a different name* <br>
+        {%endif%}
+        <label for="title">Title:</label>
+        {{form.title}}
+        <input type="submit">
+        <br><br>
+        <label for="description">Description:</label>
+        <br>
+        {{form.desc}}
+    </form>
+    
+{% endblock %}
